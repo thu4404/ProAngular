@@ -3,9 +3,10 @@
  */
 (function(){
   var sportsStore=angular.module("sportsStore");
-    sportsStore.controller("SportsStoreController",function(){
-        this.categories=valsFromService.categories;
-        this.products=valsFromService.products;
+
+    sportsStore.controller("SportsStoreController",function(ProductsService, CategoriesService){
+        this.categories=CategoriesService.query();
+        this.products=ProductsService.query();
 
     });
 })();
