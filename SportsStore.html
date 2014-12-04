@@ -4,8 +4,9 @@
     <title>SportsStore</title>
     <script src="common/js/angular.js"><!-- --></script>
     <script src="common/js/ngmodules/angular-resource.js"><!-- --></script>
+    <script src="filters/customFilters.js"><!-- --></script>
     <script src="components/sportsStore.js"><!-- --></script>
-    <script src="common/js/services/storeServices.js"><!-- --></script>
+    <script src="services/storeServices.js"><!-- --></script>
     <script src="controllers/sportsStoreController.js"><!-- --></script>
 
     <link href="common/css/bootstrap.css" rel="stylesheet" />
@@ -18,7 +19,14 @@
 </div>
 <div class="panel panel-default row" ng-controller="SportsStoreController as storeCtrl">
     <div class="col-xs-3">
-        <div ng-repeat="cat in storeCtrl.categories">{{cat.category}}</div>
+
+        <a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
+        <!--
+        <a ng-repeat="item in storeCtrl.products |categoryFilter:'category'| orderBy:'category'" class="btn btn-block btn-default btn-lg">
+            {{item.category}}
+        </a>
+        -->
+        <div class="btn btn-block btn-default btn-lg" ng-repeat="cat in storeCtrl.categories">{{cat.category}}</div>
     </div>
     <div class="col-xs-8">
         <div class="well" ng-repeat="item in storeCtrl.products">
