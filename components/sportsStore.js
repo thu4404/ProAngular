@@ -1,7 +1,7 @@
 /**
  * Created by thudoan on 12/3/14.
  */
-//var valsFromService={};
+//Declare the sportsStore module and make the customFilter and $resource available
 var sportsApp=angular.module("sportsStore",['customFilter','ngResource']);
 
 
