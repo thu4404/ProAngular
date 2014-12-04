@@ -7,7 +7,7 @@
     <script src="filters/customFilters.js"><!-- --></script>
     <script src="components/sportsStore.js"><!-- --></script>
     <script src="services/storeServices.js"><!-- --></script>
-    <script src="controllers/sportsStoreController.js"><!-- --></script>
+    <script src="controllers/productListController.js"><!-- --></script>
 
     <link href="common/css/bootstrap.css" rel="stylesheet" />
     <link href="common/css/bootstrap-theme.css" rel="stylesheet" />
@@ -18,18 +18,22 @@
     <a class="navbar-brand" href="#">SPORTS STORE</a>
 </div>
 <div class="panel panel-default row" ng-controller="SportsStoreController as storeCtrl">
+    <div ng-controller="ProductsListController as prodCtrl">
     <div class="col-xs-3">
 
-        <a ng-click="selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
-        <!-- pass in the products to the filter so it can return unique categories
-        <a ng-repeat="item in storeCtrl.products |categoryFilter:'category'| orderBy:'category'" class="btn btn-block btn-default btn-lg">
+        <a ng-click="prodCtrl.selectCategory()" class="btn btn-block btn-default btn-lg">Home</a>
+        <!-- pass in the products to the filter so it can return unique categories -->
+        <a ng-repeat="item in storeCtrl.products |categoryFilter:'category'| orderBy:'category'"
+           ng-click="prodCtrl.selectCategory(item.category)"
+           class="btn btn-block btn-default btn-lg">
             {{item.category}}
         </a>
-        -->
+        <!--
         <div class="btn btn-block btn-default btn-lg" ng-repeat="cat in storeCtrl.categories">{{cat.category}}</div>
+        -->
     </div>
     <div class="col-xs-8">
-        <div class="well" ng-repeat="item in storeCtrl.products">
+        <div class="well" ng-repeat="item in storeCtrl.products |filter:prodCtrl.categoryFilterFn">
             <h3>
                 <strong>{{item.name}}</strong>
                 <span class="pull-right label label-primary">
@@ -39,6 +43,7 @@
 
             </h3>
         </div>
+    </div>
     </div>
 </div>
 </body>
