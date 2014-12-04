@@ -18,7 +18,16 @@
         <div ng-repeat="cat in storeCtrl.categories">{{cat.category}}</div>
     </div>
     <div class="col-xs-8">
-        Products go here
+        <div class="well" ng-repeat="item in storeCtrl.products">
+            <h3>
+                <strong>{{item.name}}</strong>
+                <span class="pull-right label label-primary">
+                    {{item.price | currency}}
+                </span>
+                <span class="lead">{{item.description}}</span>
+
+            </h3>
+        </div>
     </div>
 </div>
 </body>
