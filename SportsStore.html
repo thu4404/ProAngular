@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SportsStore</title>
+    <script src="common/js/angular.js"><!-- --></script>
+    <script src="components/sportsStore.js"><!-- --></script>
+    <script src="controllers/sportsStoreController.js"><!-- --></script>
+    <link href="common/css/bootstrap.css" rel="stylesheet" />
+    <link href="common/css/bootstrap-theme.css" rel="stylesheet" />
+
+</head>
+<body ng-app="sportsStore">
+<div class="navbar navbar-inverse">
+    <a class="navbar-brand" href="#">SPORTS STORE</a>
+</div>
+<div class="panel panel-default row" ng-controller="SportsStoreController as storeCtrl">
+    <div class="col-xs-3">
+        <div ng-repeat="cat in storeCtrl.categories">{{cat.category}}</div>
+    </div>
+    <div class="col-xs-8">
+        Products go here
+    </div>
+</div>
+</body>
+</html>
